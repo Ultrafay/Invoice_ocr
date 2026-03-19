@@ -16,7 +16,7 @@ def get_details():
     if(constants.manual_field_enable): return mne.manual_extraction()
     print("----Extracting-------")
     text=[]
-    f= open(Path.joinpath(path_to_read,'output.txt'))
+    f= open(Path.joinpath(path_to_read,'output.txt'), encoding='utf-8')
     lines= f.readlines()
     for line in lines:
         if len(line)>2:
@@ -93,7 +93,7 @@ def get_details():
                 take=max(0,adresindex)
                 seller_details[adresx][1]+=line[take:]
             adresfound-=1    
-        if ("ddress" or "shipping" in line) and adresfound>0 :
+        if ("ddress" in line or "shipping" in line) and adresfound>0 :
             idx=line.find("ddress")
             idx2=line[idx+1:].find("ddress")
             idx=max(idx,idx2)
